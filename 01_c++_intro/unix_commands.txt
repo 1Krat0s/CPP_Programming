@@ -1,0 +1,10 @@
+1. ls (list) - Shows the content of the current directory.
+2. cd <directory name> (Change directory).
+3. mkdir <directory name> (make directory (folder)).
+4. code <file_name> - creates a file and opens it in the editor.
+5. clear - Clears the terminal window.
+6. ctrl + ~ - Shows/Hides the terminal.
+7. ctrl + b - Shows/Hides the explorer
+
+To compile a C++ program it is g++ <file_name>
+To run the file is ./a.out <file_name>
