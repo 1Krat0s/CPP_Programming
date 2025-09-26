@@ -8,11 +8,11 @@ void printVector(const std::vector<int>& nums);
 int numberOfDuplicates(const std::vector<int>& nums)
 {
     std::vector<int> duplicates;
-    for (int i = 0; nums.size(); i++)
+    for (int i = 0; i < nums.size(); i++)
     {
         bool isDuplicate = false;
         
-        for (int j = 0; nums.size(); j++)
+        for (int j = 0; j < nums.size(); j++)
         {
             if (i != j && nums[i] == nums[j])
             {
