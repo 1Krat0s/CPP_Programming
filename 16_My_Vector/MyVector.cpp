@@ -27,19 +27,7 @@ void MyVector::push_back(int value)
 {
     if (size == capacity)
     {
-        int new_capacity = (capacity == 0) ? 1 : capacity * 2;
-
-        int* new_elements = new int[new_capacity];
-
-        for (int i = 0; i < size; i++)
-        {
-            new_elements[i] = elements[i];
-        }
-
-        delete [] elements;
-
-        elements = new_elements;
-        capacity = new_capacity;
+        allocate_memory(capacity * 2);
     }
     elements[size] = value;
     size++;
@@ -55,34 +43,49 @@ void MyVector::print() const
     std::cout << "]\n";
 }
 
-void MyVector::pop_back()
+int MyVector::pop_back()
 {
-    if (size == 0)
+    if (size > 0)
     {
-        return;
+        if (size-1 < capacity/2)
+        {
+            allocate_memory(capacity/2);
+        }
+        return elements[--size];
     }
-    
-    size--;
-
-    if (capacity > 0 && size > 0 && capacity > 2 * size)
+    else
     {
-        int new_capacity = capacity / 2;
-
-        if (new_capacity < size)
-        {
-            new_capacity = size;
-        }
-
-        int* new_elements = new int[new_capacity];
-
-        for (int i = 0; i < size; i++)
-        {
-            new_elements[i] = elements[i];
-        }
-
-        delete [] elements;
-
-        elements = new_elements;
-        capacity = new_capacity;
+        // Throw an exception
+        throw "The vector is empty!";
     }
+}
+
+
+void MyVector::allocate_memory(int memory_size)
+{
+    capacity = memory_size;
+    int *old = elements;
+
+    // Allocate new memory
+    elements = new int[memory_size];
+    for (int i = 0; i < size; i++)
+    {
+        elements[i] = old[i];
+    }
+    // Deallocate old memory
+    delete [] old;
+}
+
+int MyVector::getCapacity() const
+{
+    return capacity;
+}
+
+int& MyVector::at(int index)
+{
+    if (index < 0 || index > size -1)
+    {
+        throw "Invalid index";
+    }
+    return elements[index];
 }

@@ -8,6 +8,8 @@ class MyVector
         int size;
         int capacity;
 
+        void allocate_memory(int memory_size);
+
     public:
         MyVector(int capacity = 1);
         ~MyVector();
@@ -16,7 +18,10 @@ class MyVector
         void push_back(int value);
         void print() const;
 
-        void pop_back();
+        int pop_back();
+        int getCapacity() const;
+
+        int& at(int index);
 
 };
 
