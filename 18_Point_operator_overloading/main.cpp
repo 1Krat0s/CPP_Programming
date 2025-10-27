@@ -3,6 +3,7 @@
 
 int main()
 {
+    /*
     Point p1(3, 4);
     Point p2(5, 4);
     Point p3(85, 84);
@@ -39,6 +40,33 @@ int main()
     }
 
     std::cout << (char) p5[1];
+    */
+
+    // New testing code
+    Point p1(3,4);
+    std::cout << p1.toString() << std::endl;
+    
+    // tets unary operator
+    Point p2 = -p1;
+    std::cout << p2.toString() << std::endl;
+    
+    // Test increment
+    ++p2;
+    p2++;
+    std::cout << p2.toString() << std::endl;
+
+    // Test decrement
+    --p2;
+    p2--;
+    std::cout << p2.toString() << std::endl;
+    
+    Point p3(0, 0);
+    
+    p3 = p1;
+    std::cout << p3.toString() << std::endl;
+
+
+
 
 
     return 0;
